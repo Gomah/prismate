@@ -32,4 +32,13 @@ const server = new ApolloServer({
   context: { photon },
 });
 
-server.listen({ port: 4000 }, () => console.log(`🚀 Server ready at http://localhost:4000`));
+server
+  .listen({ port: 4000 }, () => console.log(`🚀 Server ready at http://localhost:4000`))
+  .then(context => {
+    function close() {
+      context.server.close();
+    }
+
+    process.on('SIGINT', close);
+    process.on('SIGTERM', close);
+  });

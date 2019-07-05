@@ -10,7 +10,7 @@ export const Mutation = objectType({
       args: {
         email: stringArg({ required: true }),
         username: stringArg({ required: true }),
-      } as any,
+      },
       resolve: (parent, { email, username }, ctx: Context): Promise<User> => {
         return ctx.photon.users.create({
           data: {
