@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": ["dom", "esnext", "esnext.asynciterable", "esnext.array"],
+    "module": "commonjs",
+    "rootDir": "prisma",
+    "outDir": "./build",
+    "moduleResolution": "node",
+    "pretty": true,
+    "skipLibCheck": true,
+    "target": "esnext"
+  },
+  "include": ["prisma/**/*", "typings/**/*"],
+  "exclude": ["node_modules"]
+}

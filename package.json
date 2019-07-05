@@ -1,0 +1,53 @@
+{
+  "name": "prismate",
+  "version": "1.0.0",
+  "repository": "git@github.com:gomah/prismate.git",
+  "author": "Gomah <hi@gomah.fr>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "build": "rimraf build/ tsc -b",
+    "start": "node -r dotenv/config build/app.js",
+    "generate": "prisma2 generate",
+    "postinstall": "yarn generate",
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly -r dotenv/config ./src/index.ts",
+    "seed": "ts-node prisma/seed.ts",
+    "test:lint": "eslint --ext .js,.ts,.gql,.graphql src/ prisma/",
+    "test:build": "./node_modules/.bin/tsc -b",
+    "test": "yarn test:lint && yarn test:build"
+  },
+  "pre-commit": [
+    "test:build",
+    "test:lint"
+  ],
+  "resolutions": {
+    "graphql": "14.4.2"
+  },
+  "dependencies": {
+    "@prisma/nexus": "^0.0.1",
+    "apollo-server": "^2.6.7",
+    "dotenv": "^8.0.0",
+    "nexus": "^0.12.0-beta.6"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/graphql": "^14.2.2",
+    "@types/jsonwebtoken": "^8.3.2",
+    "@types/node": "^12.0.12",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-graphql": "^3.0.3",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "npm-run-all": "^4.1.5",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.3.0",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "typescript": "^3.5.2"
+  }
+}
